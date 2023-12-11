@@ -1,0 +1,75 @@
+<div class="main_container">
+    <div class="login_container">
+      <div class="col_left">
+        <div class="page" >
+            <img
+              loading="lazy"
+              :srcSet="bgImgLight"
+              class="bg_img"
+            />
+            <img
+              loading="lazy"
+              :srcSet="Logo"
+              class="logo_image"
+            />
+            <div class="heading">Christian Medical College, Vellore</div>
+            <div v-if="isSmallScreen" class="heading mt-5">CMC Connect</div>
+            <img
+              loading="lazy"
+              :src="Folder"
+              class="folder_image"
+            />
+        </div>
+      </div>
+      <div class="col_right">
+        <!-- <div class="logo_container">
+           <img
+              loading="lazy"
+              :srcSet="Logo"
+              class="logo_image"
+            />
+        </div> -->
+        <div class="login_portal">
+            <div class="Login_Text">{{ pageTitle }}</div>
+            <div class="login_button">
+                <div class="login_content">
+                    <img
+                        loading="lazy"
+                        srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/b4e6db422fb64dffec4904693eff1f226b3d387a675d3e7cf2e930aef3e43ea2?apiKey=b77f07679fcf45ae9688b8885c4edc21&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/b4e6db422fb64dffec4904693eff1f226b3d387a675d3e7cf2e930aef3e43ea2?apiKey=b77f07679fcf45ae9688b8885c4edc21&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/b4e6db422fb64dffec4904693eff1f226b3d387a675d3e7cf2e930aef3e43ea2?apiKey=b77f07679fcf45ae9688b8885c4edc21&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/b4e6db422fb64dffec4904693eff1f226b3d387a675d3e7cf2e930aef3e43ea2?apiKey=b77f07679fcf45ae9688b8885c4edc21&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/b4e6db422fb64dffec4904693eff1f226b3d387a675d3e7cf2e930aef3e43ea2?apiKey=b77f07679fcf45ae9688b8885c4edc21&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/b4e6db422fb64dffec4904693eff1f226b3d387a675d3e7cf2e930aef3e43ea2?apiKey=b77f07679fcf45ae9688b8885c4edc21&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/b4e6db422fb64dffec4904693eff1f226b3d387a675d3e7cf2e930aef3e43ea2?apiKey=b77f07679fcf45ae9688b8885c4edc21&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/b4e6db422fb64dffec4904693eff1f226b3d387a675d3e7cf2e930aef3e43ea2?apiKey=b77f07679fcf45ae9688b8885c4edc21&"
+                        class="btn_img"
+                        />
+                    <p class="hr_text">For CMC faculty and   students</p>
+                </div>
+            </div>
+            <div class="hr_divider"></div>
+            <div class="login_button mt-15">
+                <div class="login_content">
+                    <img
+                        loading="lazy"
+                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/36c8301c0dd86fa67eb771893014f350227fa43f6b2eec1faa773b4de8749e59?apiKey=b77f07679fcf45ae9688b8885c4edc21&"
+                        class="btn_img"
+                        />
+                    <p class="hr_text">For non - CMC and external users</p>
+                </div>
+            </div>
+        </div>
+        <div class="contact_cpright">
+            <div  class="contact_list">
+                <span v-for="(info, index) in contact" :key="index" class="contact">
+                    <img
+                    loading="lazy"
+                    :src="info.imgUrl"
+                    class="contact_img"
+                    />
+                    <span class="hr_text"> {{ info.contact }}</span>
+                    <span class="hr_div" > | </span>
+                </span>
+
+            </div>
+            <div class="copyright">© CMC Vellore 2023</div>
+
+        </div>
+        
+    </div>
+  </div>
+</div>

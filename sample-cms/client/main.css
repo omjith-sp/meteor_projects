@@ -1,0 +1,35 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+
+#app{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@font-face {
+    font-family: 'Nanum Myeongjo';
+    src: local('Nanum Myeongjo Regular'), url('fonts/NanumMyeongjo-Regular.ttf') format('truetype');
+}
+
+
+:root {
+    --lightGrey: #E5E5E5;
+    --lightHedrGrey: #f0f0f0;
+    --darkGrey: rgba(0, 0, 0, 0.31);
+    --lightText: rgba(0, 0, 0, 0.5);
+    --white:  #f9f9f9;
+    --black:  #000000;
+    --buttonText: #2F2F2FCF;
+    --navyBlue:#345987
+}
+body{
+    font-family: 'Nanum Myeongjo';
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+}

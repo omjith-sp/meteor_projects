@@ -1,0 +1,147 @@
+<div class="dashboard">
+  <Sidebar/>
+  <!-- <div class="sidebar">
+    <img loading="lazy" :srcSet="Logo" class="logo" />
+    <img loading="lazy" :src="Folder" class="folder" />
+  </div> -->
+  <div class="workspace_container">
+    <div class="header">
+      <div class="header_left">
+        <div class="workspace">Workspaces</div>
+        <div class="breadcrumb">Dashboard / File Libraries</div>
+      </div>
+      <div class="header_right">
+        <img
+          loading="lazy"
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/1ffacf969c1f4d2a509e621d997a899df417a3dc0a0f0495c9463cd29209119f?apiKey=b77f07679fcf45ae9688b8885c4edc21&"
+          class="notification_icon"
+        />
+        <div class="profile">
+          <div class="profile_image">
+            <img
+              loading="lazy"
+              srcset="
+                https://cdn.builder.io/api/v1/image/assets/TEMP/d5505235153f14d256852f70574274ca0d0a67a68e6c3dec639668269013519e?apiKey=b77f07679fcf45ae9688b8885c4edc21&width=100   100w,
+                https://cdn.builder.io/api/v1/image/assets/TEMP/d5505235153f14d256852f70574274ca0d0a67a68e6c3dec639668269013519e?apiKey=b77f07679fcf45ae9688b8885c4edc21&width=200   200w,
+                https://cdn.builder.io/api/v1/image/assets/TEMP/d5505235153f14d256852f70574274ca0d0a67a68e6c3dec639668269013519e?apiKey=b77f07679fcf45ae9688b8885c4edc21&width=400   400w,
+                https://cdn.builder.io/api/v1/image/assets/TEMP/d5505235153f14d256852f70574274ca0d0a67a68e6c3dec639668269013519e?apiKey=b77f07679fcf45ae9688b8885c4edc21&width=800   800w,
+                https://cdn.builder.io/api/v1/image/assets/TEMP/d5505235153f14d256852f70574274ca0d0a67a68e6c3dec639668269013519e?apiKey=b77f07679fcf45ae9688b8885c4edc21&width=1200 1200w,
+                https://cdn.builder.io/api/v1/image/assets/TEMP/d5505235153f14d256852f70574274ca0d0a67a68e6c3dec639668269013519e?apiKey=b77f07679fcf45ae9688b8885c4edc21&width=1600 1600w,
+                https://cdn.builder.io/api/v1/image/assets/TEMP/d5505235153f14d256852f70574274ca0d0a67a68e6c3dec639668269013519e?apiKey=b77f07679fcf45ae9688b8885c4edc21&width=2000 2000w,
+                https://cdn.builder.io/api/v1/image/assets/TEMP/d5505235153f14d256852f70574274ca0d0a67a68e6c3dec639668269013519e?apiKey=b77f07679fcf45ae9688b8885c4edc21&
+              "
+              class="profile_img"
+            />
+          </div>
+          <div class="profile_info">
+            <span class="name">Dr. Vinay</span>
+            <span class="e-mail">vinay@gmail.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="basic_info_container">
+      <div class="file_path">
+        <span class="file" v-for="(path, index) in FilePath">
+          <span class="path">{{ path }}</span>
+          <img
+            v-if="index !== FilePath.length - 1"
+            loading="lazy"
+            :src="RightArrow"
+            class="right_arrow"
+          />
+        </span>
+      </div>
+      <!-- <div class="searchbar">
+          <img
+            loading="lazy"
+            :src="SearchIcon"
+            class="search_icon"
+          />
+          <input type="text" placeholder="search">
+        </div> -->
+      <!-- <div> -->
+        <form @submit.prevent="searchHandler(query)">
+
+            <img  loading="lazy" :src="SearchIcon" class="search_icon" />
+            <input
+              class="searchbar"
+              type="text"
+              placeholder="search"
+              v-model="query"
+            />
+        </form>
+      <!-- </div> -->
+    </div>
+    <div v-if="!search" class="doc_listing_container">
+      <div class="listing_table_header">
+        <div>
+          <span class="detail sl_no">S.no</span>
+          <span class="detail name">Name</span>
+        </div>
+        <div>
+          <span class="detail created_by">Created by</span>
+          <span class="detail date">Date</span>
+        </div>
+      </div>
+      <div v-for="(document, index) in documents" class="lists">
+        <div class="list_detail_left">
+          <div class="checkbox_slno">
+            <span class="checkbox"></span>
+            <span class="sl_no">{{index+1}}</span>
+          </div>
+          <div class="doc_type_title">
+            <img loading="lazy" :srcSet="Pdf" class="doc_type_icon" />
+            <div class="file_name">{{document.displayName}}</div>
+          </div>
+        </div>
+        <div class="list_detail_right">
+          <span class="created_detail creator">{{ document.parent.properties['cm:creator'].displayName }}</span>
+          <span class="created_detail date">{{ formattedDate(document.parent.properties['cm:created'].value) }}</span>
+        </div>
+      </div>
+      <!-- <div class="hr_divider"></div> -->
+      <div class="pagination_container">
+        <div class="page_total">1 item</div>
+        <img loading="lazy" :srcset="leftArrow" class="left_right_icon" />
+        <div class="curr_page">1</div>
+        <img loading="lazy" :srcset="rightArrow" class="left_right_icon" />
+      </div>
+    </div>
+
+    <div v-else class="doc_listing_container">
+      <div class="search_listing_table_header">
+        <span>Search </span><span style="color: var(--black)">1 </span
+        ><span>of 3 results</span>
+      </div>
+      <div v-for="index in 5" class="doc_search_lists">
+        <div class="doc_thumb_detail">
+          <div class="doc_thumbnail">
+            <embed class="embed_doc" :src="documents[0].url" type="application/pdf" style="transform: scale(1.0);" width="100%" height="100%" />
+          </div>
+          <div class="doc_detail_container">
+            <div class="doc_title">CMC Web Documentation.pdf</div>
+            <div class="doc_details">
+              <div class="doc_info">
+                <div class="doc_created">Modified 2 days ago by Admin |</div>
+                <div class="doc_size">4 KB</div>
+              </div>
+              <div class="doc_type">CMC Documents:/Web Documentation</div>
+              <div class="doc_content">
+                “Lorem ipsum dolor sit Academic Year voluptatibus omnis vel
+                nihil eligendi est omnis”
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="hr_divider"></div> -->
+      </div>
+      <div class="pagination_container">
+        <div class="page_total">1 item</div>
+        <img loading="lazy" :srcset="leftArrow" class="left_right_icon" />
+        <div class="curr_page">1</div>
+        <img loading="lazy" :srcset="rightArrow" class="left_right_icon" />
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+{
+    "google": {
+      "clientId": "811881896418-q85e89oib19qog4j65tcd5nqvb2rgaa4.apps.googleusercontent.com",
+      "secret": "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"
+    },
+    "microsoft": {
+      "clientId": "YOUR_MICROSOFT_CLIENT_ID",
+      "secret": "YOUR_MICROSOFT_CLIENT_SECRET"
+    }
+  }
+  
